@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="textMessage">
+<head>
+	<title>Text</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<body ng-controller="homeController">
+	<div class="container">
+
+		<!-- Page header START -->
+		<div class="page-header text-center">
+			<h1><span class="glyphicon glyphicon-edit"> </span> Text Message Center</h1>
+		</div>
+		<!-- Page header END -->
+
+		<!-- Show message START -->
+		<div class="row" ng-repeat="mes in messageAB">
+		<!-- MESSAGE FROM A START -->
+			<!-- Display an icon for each message from A -->
+			<div class="col-md-2">
+				<div ng-if=" mes.person=='A' ">
+					<img class="personIconA" src="https://image.flaticon.com/icons/svg/188/188987.svg">
+				</div>
+			</div>
+			<!-- Display messages sent from A -->
+			<div class="col-md-4">
+				<div class="mesWinA" ng-if=" mes.person=='A' ">
+					<p>{{ mes.message }}</p>
+				</div>
+			</div>
+		<!-- MESSAGE FROM A END -->
+
+		<!-- MESSAGE FROM B START -->
+			<!-- Display messages sent from B -->
+			<div class="col-md-4">
+				<div class="mesWinB" ng-if=" mes.person=='B' ">
+					<p>{{ mes.message }}</p>
+				</div>
+			</div>
+			<!-- Display an icon for each message from B -->
+			<div class="col-md-2" ng-if=" mes.person=='B' ">
+				<img class="personIconB" src="https://image.flaticon.com/icons/svg/188/188993.svg">
+			</div>
+		<!-- MESSAGE FROM B END -->
+		</div>
+		<!-- Show message END -->
+
+
+		<br><br>
+		<hr>
+
+		<!-- Input message START -->
+		<div>
+			<div class="col-md-2"></div>
+			<div class="col-md-6">
+				<textarea cols="10" rows="5" id="textMessage" placeholder="Input your text message" ng-model="message" class="form-control"></textarea>
+			</div>
+			<div class="col-md-2">
+				<button type="submit" ng-click="submitFromA()" class="btn btn-primary btn-block">Send from A</button>
+				<br>
+				<button type="submit" ng-click="submitFromB()" class="btn btn-success btn-block">Send from B</button>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<!-- Input message END -->
+
+	</div>
+
+</body>
+</html>
